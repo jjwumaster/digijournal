@@ -1,0 +1,9 @@
+<ol>
+
+<% @journals.each do |journal| %>
+
+  <li><%= link_to "#{journal.name}", journal_path(journal) %></li>
+
+<% end %>
+
+</ol>

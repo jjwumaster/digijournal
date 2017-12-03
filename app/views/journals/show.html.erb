@@ -1,0 +1,21 @@
+<h2> <%= @journal.name %> </h2>
+
+
+<% @d = Date.today %>
+
+<%= @d.strftime("Today is %A, %B %d") %>
+
+<div>
+<form action="/entries/new">
+    <input type="hidden" name="date" value="<%= @d %>" >
+    <input type="submit" value="New Entry" />
+</form>
+</div>
+
+<ol>
+<% @entries.each do |entry| %>
+
+  <li><%= link_to "#{entry.title}", entry_path(entry) %> <%= entry.date.strftime("%A %B, %d, %Y") %></li>
+
+<% end %>
+</ol>

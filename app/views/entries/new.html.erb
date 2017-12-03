@@ -1,0 +1,26 @@
+
+
+<%= form_for @entry do |f| %>
+
+  <label> Title: </label>
+  <div>  <%= f.text_field :title %> </div>
+  <br>
+
+  <label> Content: </label>
+  <div> <%= f.text_area :content %> </div>
+  <br>
+
+  <div>Date</div>
+  <%= date_select :entry, :date %>
+
+  <br>
+  <br>
+
+  <div> Journal </div>
+    <%= collection_select :journal, :journal_id, Journal.all, :id, :name %>
+  <br>
+
+  <br>
+  <%= f.submit %>
+
+<% end %>

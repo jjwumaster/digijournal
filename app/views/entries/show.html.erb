@@ -1,0 +1,24 @@
+<p><%= @entry.date.strftime("Written on %A, %B %d, %Y") %></p>
+<h2> <%= @entry.title %> </h2>
+<p><%= @entry.content %></p>
+
+<hr>
+
+<% (1..5).to_a.each do |year| %>
+  <div>
+    This day <%= pluralize(year, 'year') %> ago...
+    <% year_ago = @entry.date.change(year: @entry.date.year - year) %>
+    <%= year_ago.strftime("%A, %B %d, %Y") %>
+
+    <% if Entry.find_by(date: year_ago) %>
+      <% old_entry = Entry.find_by(date: year_ago) %>
+      <h2> <%= old_entry.title %> </h2>
+      <p> <%= old_entry.content %></p>
+    <% else %>
+      <p> ... </p>
+    <% end %>
+    <hr>
+
+
+  </div>
+<% end %>
